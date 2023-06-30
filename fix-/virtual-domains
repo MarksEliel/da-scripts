@@ -1,0 +1,19 @@
+#!/bin/sh
+
+echo `hostname`;
+
+for u in `ls /usr/local/directadmin/data/users`; do
+{
+          for d in `cat /usr/local/directadmin/data/users/$u/domains.list`; do
+          {
+                    echo "$d"
+
+                    for p in `cat /usr/local/directadmin/data/users/$u/domains/$d.pointers 2>/dev/null | cut -d= -f1 2>/dev/null`; do
+                    {
+                              echo "$p"
+                    }
+                    done;
+          }
+          done;
+}
+done;
